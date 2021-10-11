@@ -1,16 +1,25 @@
-import React from "react";
-import kakaoimg from "../src/kakao.png";
-import { KAKAO_URL } from "./socialLoginAuth";
-import axios from "axios";
+import logo from './logo.svg';
+import './App.css';
 
-const App = () => {
+function App() {
   return (
-    <div>
-      <a href="http://3.38.97.234:8000/core-service/oauth2/authorization/kakao">
-        <img src={kakaoimg} width="222" />
-      </a>
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
     </div>
   );
-};
+}
 
 export default App;
