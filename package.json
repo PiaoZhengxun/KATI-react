@@ -1,0 +1,9 @@
+{
+  "name": "KATI-react",
+  "version": "1.0.0",
+  "description": "teamProject",
+  "main": "index.js",
+  "repository": "https://github.com/PiaoZhengxun/KATI-react.git",
+  "author": "hong",
+  "license": "MIT"
+}
