@@ -24,7 +24,7 @@ function App() {
     
     <div className="App">
       <Header/>
-        <div style={{ paddingTop: '20px', minHeight: 'calc(100vh - 100px)' }}>
+        <div style={{ paddingTop: '100px', minHeight: 'calc(100vh - 100px)' }}>
         <BrowserRouter>
           <Switch>
             <Route path="/" exact component={MainPage} />
