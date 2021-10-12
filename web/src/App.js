@@ -1,47 +1,25 @@
-import Header from './Components/Header/Header'
-import Footer from './Components/Footer/Footer'
-import {
-  BrowserRouter,
-  BrowserRouter as Router,
-  Redirect,
-  Route,
-  Switch,
-} from 'react-router-dom';
-import MainPage from './Pages/MainPage/MainPage'
-import RankingPage from './Pages/RankingPage/RankingPage';
-import CategoryPage from './Pages/CategoryPage/CategoryPage';
-import JoinPage from './Pages/JoinPage/JoinPage';
-import LoginPage from './Pages/LoginPage/LoginPage';
-import SearchPage from './Pages/SearchPage/SearchPage';
-function App() {
+import React, { useState } from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 
+import SideBar from "./Components/sidebar/SideBar";
+import Content from "./Components/Content/Content";
+import "./App.scss";
 
-
-  // 로그인 토큰 가져오는 곳
-  // 로그인 & 로그아웃 관련된 코드들..
+const App = () => {
+  const [sidebarIsOpen, setSidebarOpen] = useState(true);
+  const toggleSidebar = () => setSidebarOpen(!sidebarIsOpen);
 
   return (
-    
-    <div className="App">
-      <Header/>
-        <div style={{ paddingTop: '100px', minHeight: 'calc(100vh - 100px)' }}>
-        <BrowserRouter>
-          <Switch>
-            <Route path="/" exact component={MainPage} />
-            <Route path="/search" exact component={SearchPage}/>
-            <Route path="/category" exact component={CategoryPage} />
-            <Route path="/ranking" exact component={RankingPage}/>
-            <Route path="/join" exact component={JoinPage} />
-            <Route path="/login" exact component={LoginPage}/>
-             {/* url잘못치면 메인으로 */}
-            <Redirect from="*" to="/" />
-          </Switch>
-        </BrowserRouter>
-        </div>
-      <Footer/>
-    </div>
+    <Router>
+      <div className="App wrapper">
+        <SideBar toggle={toggleSidebar} isOpen={sidebarIsOpen} />
+        <Content toggleSidebar={toggleSidebar} sidebarIsOpen={sidebarIsOpen} />
+      </div>
+    </Router>
 
   );
-}
+};
 
 export default App;
+
