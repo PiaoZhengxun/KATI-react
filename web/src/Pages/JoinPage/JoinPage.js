@@ -1,11 +1,20 @@
-import React from 'react'
+import React from "react";
+import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 
 function JoinPage() {
-    return (
-        <div>
-            회원가입하세요~
-        </div>
-    )
+  return (
+    <Form>
+      <FormGroup>
+        <Label for="email">Email</Label>
+        <Input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="email@email.com"
+        />
+      </FormGroup>
+    </Form>
+  );
 }
 
-export default JoinPage
+export default JoinPage;
