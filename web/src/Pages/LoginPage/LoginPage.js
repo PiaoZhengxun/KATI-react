@@ -3,7 +3,7 @@ import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 
 function LoginPage() {
   return (
-    <div>
+    <div style={{width:'100%',height:'100%',backgroundColor:'white'}}>
       <div>
         <Form>
           <FormGroup>
