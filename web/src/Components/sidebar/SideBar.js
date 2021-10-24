@@ -16,24 +16,28 @@ const SideBar = ({ isOpen, toggle }) => (
     </div>
     <div className="side-menu">
       <Nav vertical className="list-unstyled pb-3">
-        <NavItem>
-          <NavLink className="nav_link"tag={Link} to={"/"}>
-          <AiOutlineHome size="30"/> HOME
+      <NavItem>
+          <NavLink className="nav_link" tag={Link} to={"/"} style={{display:'flex',alignItems:'center'}}>
+          <AiOutlineHome className="nav_menu" size="40"/> 
+          <div className="nav_menu" style={{marginLeft:'5%'}}>HOME</div>
           </NavLink>
         </NavItem>
         <NavItem>
-          <NavLink tag={Link} to={"/search"}>
-            <BiSearch size="30"/> SEARCH
+          <NavLink className="nav_link" tag={Link} to={"/ranking"} style={{display:'flex',alignItems:'center'}}>
+          <BiSearch className="nav_menu" size="40"/>
+          <div className="nav_menu" style={{marginLeft:'5%'}}>SEARCH</div>
           </NavLink>
         </NavItem>
         <NavItem>
-          <NavLink tag={Link} to={"/category"}>
-          <MdOutlineCategory size="30"/> CATEGORY
+          <NavLink className="nav_link" tag={Link} to={"/category"} style={{display:'flex',alignItems:'center'}}>
+          <MdOutlineCategory className="nav_menu" size="40"/> 
+          <div className="nav_menu" style={{marginLeft:'5%'}}>CATEGORY</div>
           </NavLink>
         </NavItem>
         <NavItem>
-          <NavLink tag={Link} to={"/ranking"}>
-          <FiAward size="30"/>RANKING
+          <NavLink className="nav_link" tag={Link} to={"/ranking"} style={{display:'flex',alignItems:'center'}}>
+          <FiAward className="nav_menu" size="40"/>
+          <div className="nav_menu" style={{marginLeft:'5%'}}>RANKING</div>
           </NavLink>
         </NavItem>
       </Nav>

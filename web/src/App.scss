@@ -58,17 +58,25 @@ a{
 }
 
 .menu-open {
-  background: #6d7fcc;
+  background: $primary-color;
+}
+.nav_link{
+  font-size: large;
+  padding: 20px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  &:hover{
+    background-color: white;
+  }
+  &:hover .nav_menu{
+    color: $primary-color;
+  }
 }
 
-.nav-item:hover {
-  color: $sub-color;
-  background: #fff;
-}
 
 .items-menu {
   color: #fff;
-  background: #6d7fcc;
+  background: $sub-color;
 }
 
 li a.dropdown-toggle::after {
@@ -132,6 +140,7 @@ li a.dropdown-toggle::after {
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
+
 .content {
   padding: 20px;
   margin-left: 0;
