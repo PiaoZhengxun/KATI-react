@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
-import { userLogin } from "api";
-import { kakaoImage } from "../../src/Images/kakaoLogin.PNG";
-import { naverImage } from "../../src/Images/naverLogin.PNG";
+import { userLogin } from "../../api";
+
 var token;
 
 function LoginPage() {
@@ -63,10 +62,10 @@ function LoginPage() {
       </div>
       <div>
         <a href="http://3.38.97.234:8000/core-service/oauth2/authorization/kakao">
-          <img src={kakaoImage} alt="카카오" width="55" />
+          <img src="../../src/Images/kakaoLogin.PNG" alt="카카오" width="55" />
         </a>
         <a href="http://3.38.97.234:8000/core-service/oauth2/authorization/naver">
-          <img src={naverImage} alt="네이버" width="55" />
+          <img src="../../src/Images/naverLogin.PNG" alt="네이버" width="55" />
         </a>
       </div>
     </div>
