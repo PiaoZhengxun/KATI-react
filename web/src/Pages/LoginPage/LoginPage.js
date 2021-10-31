@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import { userLogin } from "../../api";
+import { KAKAO_AUTH_URL } from "./KakaoAuth";
 
 var token;
 
@@ -23,7 +24,7 @@ function LoginPage() {
       .then((response) => {
         token = response.headers.authorization;
         localStorage.setItem("authorization", token);
-        window.location.href = "/";
+        // window.location.href = "/";
       })
       .catch((error) => {
         alert("로그인 실패", error);
@@ -61,9 +62,9 @@ function LoginPage() {
         <button onClick={login}>Login</button>
       </div>
       <div>
-        <a href="http://3.38.97.234:8000/core-service/oauth2/authorization/kakao">
+        <Button href={KAKAO_AUTH_URL}>
           <img src="../../src/Images/kakaoLogin.PNG" alt="카카오" width="55" />
-        </a>
+        </Button>
         <a href="http://3.38.97.234:8000/core-service/oauth2/authorization/naver">
           <img src="../../src/Images/naverLogin.PNG" alt="네이버" width="55" />
         </a>
