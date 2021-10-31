@@ -435,3 +435,11 @@ export const getUserInfoApi = {
       },
     }),
 };
+
+export const getKakaoLogin = {
+  kakaoLogin: () =>
+    api.get(
+      "oauth/authorize?client_id=e44c5d0df42c6613c266e56204d9457b&redirect_uri=http://localhost:3000/login/ouath2/code/kakao&response_type=code"
+      // https://cors-anywhere.herokuapp.com/https://kauth.kakao.com/ 이건 개인적으로 프록시서버 사용하는 것
+    ),
+};
