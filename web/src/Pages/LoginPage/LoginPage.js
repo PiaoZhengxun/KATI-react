@@ -77,8 +77,9 @@ function LoginPage() {
         <button onClick={login}>Login</button>
       </div>
       <div>
-        <Button onClick={kakaoLogin}>
-          {/* <Button href={KAKAO_AUTH_URL}> */}
+        {/* <Button onClick={kakaoLogin}> */}
+        {/* <Button href={KAKAO_AUTH_URL}> */}
+        <Button href="http://3.38.97.234:8000/core-service/oauth2/authorization/kakao">
           <img src="../../src/Images/kakaoLogin.PNG" alt="카카오" width="55" />
         </Button>
         {/* <a href="http://3.38.97.234:8000/core-service/oauth2/authorization/naver">
