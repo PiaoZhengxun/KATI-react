@@ -7,7 +7,7 @@ function SocialLoginPage() {
   const REDIRECT_URI = "http://localhost:3000/login/ouath2/code/kakao";
   const REST_API_KEY = "e44c5d0df42c6613c266e56204d9457b";
   const CLIENT_SECRET = "Rf1yNHjgzlieBWNm7T4ZOvSaASvNZ8UV";
-  const [bearer, setBearer] = useState("");
+  const [accessToken, setAccessToken] = useState("");
 
   useEffect(() => {
     const code = window.location.search.split("?code=")[1];
@@ -17,25 +17,34 @@ function SocialLoginPage() {
           console.log("requestToken:", data);
           const accessToken = data.access_token;
           console.log(accessToken, "aceessToken 부분");
-          kakaoSocialLogin
-            .kakaoToken(accessToken)
-            .then((response) => {
-              console.log("서버에서 받아온 토큰", response);
-              localStorage.setItem("token", response);
-              console.log(
-                localStorage.getItem("token"),
-                "로컬스토리지 저장 완료"
-              );
-            })
-            .catch((err) => {
-              console.log("서버에서 받아오는 토큰 부분 err", err);
-            });
+          setAccessToken(accessToken);
+          fetchServerToken();
         })
         .catch((err) => {
           console.log("requestTokenErr:", err);
         });
     }
   }, []);
+
+  const fetchServerToken = async () => {
+    try {
+      console.log("fetchServerToken까지 들어옴");
+
+      console.log("yesToken True까지 들어옴");
+      kakaoSocialLogin
+        .kakaoToken(accessToken)
+        .then((response) => {
+          console.log("서버에서 받아온 토큰", response);
+          localStorage.setItem("token", response);
+          console.log(localStorage.getItem("token"), "로컬스토리지 저장 완료");
+        })
+        .catch((err) => {
+          console.log("서버에서 받아오는 토큰 부분 err", err);
+        });
+    } catch (e) {
+      console.log("서버에서 받아오는데 안받아짐 ", e);
+    }
+  };
 
   function requestToken(code) {
     const makeFormData = (params) => {
