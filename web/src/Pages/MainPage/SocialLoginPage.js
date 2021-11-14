@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { kakaoSocialLogin } from "../../api";
+import { createDispatchHook } from "react-redux";
 
 function SocialLoginPage() {
   // const [code, setCode] = useState("");
   const REDIRECT_URI = "http://localhost:3000/login/ouath2/code/kakao";
   const REST_API_KEY = "e44c5d0df42c6613c266e56204d9457b";
   const CLIENT_SECRET = "Rf1yNHjgzlieBWNm7T4ZOvSaASvNZ8UV";
-  const [accessToken, setAccessToken] = useState("");
 
   useEffect(() => {
     const code = window.location.search.split("?code=")[1];
@@ -17,8 +17,16 @@ function SocialLoginPage() {
           console.log("requestToken:", data);
           const accessToken = data.access_token;
           console.log(accessToken, "aceessToken 부분");
-          setAccessToken(accessToken);
-          fetchServerToken();
+          localStorage.setItem("accessToken", accessToken);
+          console.log(
+            "로컬스토리지에 액세스토큰 저장 확인",
+            localStorage.getItem("accessToken")
+          );
+          if (localStorage.getItem("accessToken") !== null) {
+            fetchKakao(localStorage.getItem("accessToken"));
+          } else {
+            console.log("fetchKAKAO넘어가는 부분에서 안넘어감");
+          }
         })
         .catch((err) => {
           console.log("requestTokenErr:", err);
@@ -26,25 +34,24 @@ function SocialLoginPage() {
     }
   }, []);
 
-  const fetchServerToken = async () => {
-    try {
-      console.log("fetchServerToken까지 들어옴");
-
-      console.log("yesToken True까지 들어옴");
-      kakaoSocialLogin
-        .kakaoToken(accessToken)
-        .then((response) => {
-          console.log("서버에서 받아온 토큰", response);
-          localStorage.setItem("token", response);
-          console.log(localStorage.getItem("token"), "로컬스토리지 저장 완료");
-        })
-        .catch((err) => {
-          console.log("서버에서 받아오는 토큰 부분 err", err);
-        });
-    } catch (e) {
-      console.log("서버에서 받아오는데 안받아짐 ", e);
-    }
+  const fetchKakao = (accessTT) => {
+    kakaoSocialLogin
+      .kakaoToken(accessTT)
+      .then((response) => {
+        console.log("잘들어옴 ㅇㅇ::", response);
+      })
+      .catch((error) => {
+        console.log(error, "에러발생 발생");
+      });
   };
+
+  // useEffect(() => {
+  //   try {
+  //     kakaoLoginZuihou();
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // }, []);
 
   function requestToken(code) {
     const makeFormData = (params) => {

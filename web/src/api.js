@@ -3,7 +3,7 @@ import axios from "axios";
 
 const api = axios.create({
   // baseURL: "http://13.124.55.59:8080/",
-  baseURL: "http://3.38.97.234:8000/core-service",
+  baseURL: "http://3.38.97.234:8000/core-service/",
 });
 
 //User 관련 부분
@@ -23,8 +23,11 @@ export const kakaoSocialLogin = {
   kakaoToken: (accessToken) =>
     api.post(
       "/oauth2-login",
-      { loginType: "KAKAO" },
-      { accessToken: accessToken }
+      {
+        loginType: "KAKAO",
+        accessToken: accessToken,
+      },
+      { headers: { "Content-Type": "application/json" } }
     ),
 };
 
