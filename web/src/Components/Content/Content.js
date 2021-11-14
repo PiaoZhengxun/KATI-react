@@ -15,20 +15,25 @@ import LoginPage from "../../Pages/LoginPage/LoginPage";
 import SearchPage from "../../Pages/SearchPage/SearchPage";
 import SocialLoginPage from "../../Pages/MainPage/SocialLoginPage";
 import Topbar from "./Topbar";
-
+import FindIdPage from "../../Pages/FindIdPage/FindIdPage";
+import FindPwPage from "../../Pages/FindPwPage/FindPwPage";
+import JoinEmailPage from "../../Pages/JoinEmailPage/JoinEmailPage";
 const Content = ({ sidebarIsOpen, toggleSidebar }) => (
   <Container
     fluid
     className={classNames("content", { "is-open": sidebarIsOpen })}
   >
-    <Topbar toggleSidebar={toggleSidebar} />
+    <Topbar toggleSidebar={toggleSidebar} sidebarIsOpen={sidebarIsOpen} />
     <Switch>
       <Route path="/" exact component={MainPage} />
       <Route path="/search" exact component={SearchPage} />
       <Route path="/category" exact component={CategoryPage} />
       <Route path="/ranking" exact component={RankingPage} />
       <Route path="/join" exact component={JoinPage} />
+      <Route path="/join/email" exact component={JoinEmailPage} />
       <Route path="/login" exact component={LoginPage} />
+      <Route path="/find/id" exact component={FindIdPage} />
+      <Route path="/find/pw" exact component={FindPwPage} />
       <Route
         path="/login/ouath2/code/kakao"
         exact

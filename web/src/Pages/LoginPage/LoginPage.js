@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Button, Form, FormGroup, Label, Input, Col, Row } from "reactstrap";
+import { Button, Form, FormGroup, Label, Input, Col, Row, NavLink} from "reactstrap";
+import { Link } from "react-router-dom";
 import { getKakaoLogin, userLogin } from "../../api";
 import "./LoginPageStyle.scss";
 import { SiNaver, SiKakaotalk } from "react-icons/si";
@@ -111,9 +112,15 @@ function LoginPage() {
           <div
             style={{ display: "flex", marginTop: "10px", marginBottom: "50px" }}
           >
-            <div className="select_btn">회원가입</div>
-            <div className="select_btn">이메일 찾기</div>
-            <div className="select_btn">비밀번호 찾기</div>
+            <NavLink className="select_btn" tag={Link} to={"/join"}>
+              회원가입
+            </NavLink>
+            <NavLink className="select_btn" tag={Link} to={"/find/id"}>
+              이메일 찾기
+            </NavLink>
+            <NavLink className="select_btn" tag={Link} to={"/find/pw"}>
+              비밀번호 찾기
+            </NavLink>
           </div>
           <Button
             className="social_login_btn"
