@@ -23,7 +23,7 @@ const Topbar = ({ toggleSidebar,sidebarIsOpen}) => {
       expand="lg"
       style={{display:"flex",flexWrap:"wrap",justifyContent:"space-around"}}
     >
-       <div onClick={toggleSidebar}>
+       <div onClick={toggleSidebar} style={{marginRight:'4rem'}}>
        {sidebarIsOpen ? <AiOutlineArrowLeft size="30" /> : <AiOutlineArrowRight size="30" />}
       </div>
 
