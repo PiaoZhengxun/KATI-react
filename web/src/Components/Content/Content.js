@@ -15,7 +15,7 @@ import LoginPage from "../../Pages/LoginPage/LoginPage";
 import SearchPage from "../../Pages/SearchPage/SearchPage";
 import SocialLoginPage from "../../Pages/MainPage/SocialLoginPage";
 import Topbar from "./Topbar";
-import FindIdPage from "../../Pages/FindIdPage/FindIdPage";
+import FindEmailPage from "../../Pages/FindEmailPage/FindEmailPage";
 import FindPwPage from "../../Pages/FindPwPage/FindPwPage";
 import JoinEmailPage from "../../Pages/JoinEmailPage/JoinEmailPage";
 const Content = ({ sidebarIsOpen, toggleSidebar }) => (
@@ -32,7 +32,7 @@ const Content = ({ sidebarIsOpen, toggleSidebar }) => (
       <Route path="/join" exact component={JoinPage} />
       <Route path="/join/email" exact component={JoinEmailPage} />
       <Route path="/login" exact component={LoginPage} />
-      <Route path="/find/id" exact component={FindIdPage} />
+      <Route path="/find/email" exact component={FindEmailPage} />
       <Route path="/find/pw" exact component={FindPwPage} />
       <Route
         path="/login/ouath2/code/kakao"

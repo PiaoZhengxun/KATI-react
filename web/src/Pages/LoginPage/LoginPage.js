@@ -115,7 +115,7 @@ function LoginPage() {
             <NavLink className="select_btn" tag={Link} to={"/join"}>
               회원가입
             </NavLink>
-            <NavLink className="select_btn" tag={Link} to={"/find/id"}>
+            <NavLink className="select_btn" tag={Link} to={"/find/email"}>
               이메일 찾기
             </NavLink>
             <NavLink className="select_btn" tag={Link} to={"/find/pw"}>
