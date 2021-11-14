@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { kakaoSocialLogin } from "../../api";
 
 function SocialLoginPage() {
   // const [code, setCode] = useState("");
@@ -14,8 +15,21 @@ function SocialLoginPage() {
       requestToken(code)
         .then(({ data }) => {
           console.log("requestToken:", data);
-          setBearer(data);
-          console.log(bearer, "토큰 부분");
+          const accessToken = data.access_token;
+          console.log(accessToken, "aceessToken 부분");
+          kakaoSocialLogin
+            .kakaoToken(accessToken)
+            .then((response) => {
+              console.log("서버에서 받아온 토큰", response);
+              localStorage.setItem("token", response);
+              console.log(
+                localStorage.getItem("token"),
+                "로컬스토리지 저장 완료"
+              );
+            })
+            .catch((err) => {
+              console.log("서버에서 받아오는 토큰 부분 err", err);
+            });
         })
         .catch((err) => {
           console.log("requestTokenErr:", err);

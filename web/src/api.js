@@ -17,6 +17,16 @@ export const userWithdrawal = {
     ),
 };
 
+//KAKAO 소셜로그인 부분
+export const kakaoSocialLogin = {
+  kakaoToken: (accessToken) =>
+    api.post(
+      "/oauth2-login",
+      { loginType: "KAKAO" },
+      { accessToken: accessToken }
+    ),
+};
+
 //이메일 찾기 부분
 export const findEmail = {
   findUserEmail: (secondEmail) =>
