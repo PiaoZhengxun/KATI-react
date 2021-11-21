@@ -41,6 +41,8 @@ function LoginPage() {
     userLogin
       .userLoginApi(email, password)
       .then((response) => {
+        console.log(response);
+        console.log(response.Headers.Authorization);
         token = response.headers.authorization;
         localStorage.setItem("authorization", token);
         // window.location.href = "/";
