@@ -29,6 +29,7 @@ function SocialLoginPage() {
           }
         })
         .catch((err) => {
+          console.log("requestTokenErr:", err.response);
           console.log("requestTokenErr:", err);
         });
     }
@@ -41,6 +42,7 @@ function SocialLoginPage() {
         console.log("잘들어옴 ㅇㅇ::", response);
       })
       .catch((error) => {
+        console.log("밑 fetch", error.response);
         console.log(error, "에러발생 발생");
       });
   };

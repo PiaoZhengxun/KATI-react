@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input, Col, Row, NavLink} from "reactstrap";
 import { Link } from "react-router-dom";
-import { getKakaoLogin, userLogin } from "../../api";
+import { getKakaoLogin, testTest, userLogin } from "../../api";
 import "./LoginPageStyle.scss";
 import { SiNaver, SiKakaotalk } from "react-icons/si";
 import queryString from "query-string";
 import { KAKAO_AUTH_URL } from "./KakaoAuth";
+import axios from "axios";
 
 var token;
 
@@ -23,6 +24,18 @@ function LoginPage() {
     setEmail(e.target.value);
   };
 
+  const awsaws = (e) => {
+    e.preventDefault();
+    axios.get("http://3.38.97.234:8000/core-service/api/v1/advertisement/search?size=3")
+    .then((response) => {
+      console.log(response);
+      console.log("Abcd");
+    }).catch((error) => {
+      console.log(error.response);
+    })
+   
+  }
+
   const login = (e) => {
     e.preventDefault();
     userLogin
@@ -31,23 +44,12 @@ function LoginPage() {
         token = response.headers.authorization;
         localStorage.setItem("authorization", token);
         // window.location.href = "/";
+        console.log("성공함");
       })
       .catch((error) => {
         alert("로그인 실패", error);
         console.log("LoginPage.js <- 여기서 login 부분 실패");
       });
-  };
-
-  const kakaoLogin = () => {
-    try {
-      getKakaoLogin.kakaoLogin().then((response) => {
-        setTemp1(JSON.stringify(response.code));
-      });
-    } catch (e) {
-      console.log(e, "로그인 try/catch 부문 에러");
-    }
-    const code = data;
-    console.log(code, "여기 KakaoLogin 부분 code 출력하는 것");
   };
 
   return (
@@ -106,8 +108,12 @@ function LoginPage() {
           <button
             className="login_btn"
             style={{ width: "100%", height: "50px" }}
+            onClick={login}
           >
             로그인
+          </button>
+          <button onClick={awsaws}>
+            니하오
           </button>
           <div
             style={{ display: "flex", marginTop: "10px", marginBottom: "50px" }}
@@ -127,7 +133,6 @@ function LoginPage() {
             style={{ backgroundColor: "white", border: "1px solid #B1B1B1" }}
             href={KAKAO_AUTH_URL}
           >
-            {/* //http://3.38.97.234:8000/core-service/oauth2/authorization/kakao */}
             <div>
               <SiKakaotalk size="30" color="#3a1c1c" />
             </div>

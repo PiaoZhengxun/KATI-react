@@ -2,7 +2,6 @@ import axios from "axios";
 // import UserRanking from "Routes/UserRanking";
 
 const api = axios.create({
-  // baseURL: "http://13.124.55.59:8080/",
   baseURL: "http://3.38.97.234:8000/core-service/",
 });
 
@@ -18,6 +17,11 @@ export const userWithdrawal = {
     ),
 };
 
+export const testTest = {
+  testtest: () =>
+  axios.get("/api/v1/user")
+}
+
 //KAKAO 소셜로그인 부분
 export const kakaoSocialLogin = {
   kakaoToken: (accessToken) =>
@@ -27,7 +31,7 @@ export const kakaoSocialLogin = {
         loginType: "KAKAO",
         accessToken: accessToken,
       },
-      { headers: { "Content-Type": "application/json" } }
+      { headers: { "Content-Type": "application/json", } }
     ),
 };
 
