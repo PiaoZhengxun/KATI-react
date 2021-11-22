@@ -1,5 +1,14 @@
 import React, { useState } from "react";
-import { Button, Form, FormGroup, Label, Input, Col, Row, NavLink} from "reactstrap";
+import {
+  Button,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Col,
+  Row,
+  NavLink,
+} from "reactstrap";
 import { Link } from "react-router-dom";
 import { getKakaoLogin, testTest, userLogin } from "../../api";
 import "./LoginPageStyle.scss";
@@ -15,6 +24,7 @@ function LoginPage() {
   const [email, setEmail] = useState("");
   const [data, setData] = useState("");
   const [temp1, setTemp1] = useState("");
+  const [okLogin, setOkLogin] = useState(false);
 
   const onPasswordChange = (e) => {
     setPassword(e.target.value);
@@ -26,15 +36,18 @@ function LoginPage() {
 
   const awsaws = (e) => {
     e.preventDefault();
-    axios.get("http://3.38.97.234:8000/core-service/api/v1/advertisement/search?size=3")
-    .then((response) => {
-      console.log(response);
-      console.log("Abcd");
-    }).catch((error) => {
-      console.log(error.response);
-    })
-   
-  }
+    axios
+      .get(
+        "http://3.38.97.234:8000/core-service/api/v1/advertisement/search?size=3"
+      )
+      .then((response) => {
+        console.log(response);
+        console.log("Abcd");
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+  };
 
   const login = (e) => {
     e.preventDefault();
@@ -43,13 +56,16 @@ function LoginPage() {
       .then((response) => {
         console.log(response);
         console.log(response.Headers.Authorization);
-        token = response.headers.authorization;
+        token = response.headers["authorization"];
         localStorage.setItem("authorization", token);
         // window.location.href = "/";
         console.log("성공함");
+        setOkLogin(true);
       })
       .catch((error) => {
         alert("로그인 실패", error);
+        console.log(error);
+        console.log(error.response);
         console.log("LoginPage.js <- 여기서 login 부분 실패");
       });
   };
@@ -114,9 +130,7 @@ function LoginPage() {
           >
             로그인
           </button>
-          <button onClick={awsaws}>
-            니하오
-          </button>
+          <button onClick={awsaws}>니하오</button>
           <div
             style={{ display: "flex", marginTop: "10px", marginBottom: "50px" }}
           >
