@@ -6,26 +6,34 @@ import { mount } from "enzyme";
 import { configure } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 
-import { render, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, getByTestId } from "@testing-library/react";
 
 import LoginPage from "../Pages/LoginPage/LoginPage";
 
 import MockAdapter from "axios-mock-adapter";
+import "@testing-library/jest-dom/extend-expect";
 
-describe("<LoginPage/>", () => {
-  const mock = new MockAdapter(axios, { delayResponse: 2000 });
-  mock
-    .onPost(
-      "http://3.38.97.234:8000/core-service/login",
-      { email: "cksgh3422@nate.com", password: "1234568" },
-      {
-        headers: {
-          "Content-Type": "Application/json",
-        },
-      }
-    )
-    .reply(200);
+it("test LoginPage", async () => {
+  const url = "/login";
+  render(<LoginPage />);
+  const email = screen.getByLabelText("Email");
+  const password = screen.getByLabelText("Password");
 });
+
+// describe("<LoginPage/>", () => {
+//   const mock = new MockAdapter(axios, { delayResponse: 2000 });
+//   mock
+//     .onPost(
+//       "http://3.38.97.234:8000/core-service/login",
+//       { email: "cksgh3422@nate.com", password: "1234568" },
+//       {
+//         headers: {
+//           "Content-Type": "Application/json",
+//         },
+//       }
+//     )
+//     .reply(200);
+// });
 
 //=-------------------------------------------------------------
 //=--------------------------NEW--------------------------------

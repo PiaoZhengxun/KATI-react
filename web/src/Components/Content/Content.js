@@ -18,6 +18,9 @@ import Topbar from "./Topbar";
 import FindEmailPage from "../../Pages/FindEmailPage/FindEmailPage";
 import FindPwPage from "../../Pages/FindPwPage/FindPwPage";
 import JoinEmailPage from "../../Pages/JoinEmailPage/JoinEmailPage";
+import TestPage from "../../Pages/TestPage/TestPage";
+import LoginPageTest from "../../Pages/TestPage/TestLoginPage";
+import FailLoginPageTest from "../../Pages/TestPage/FailTestLoginPage";
 const Content = ({ sidebarIsOpen, toggleSidebar }) => (
   <Container
     fluid
@@ -34,6 +37,9 @@ const Content = ({ sidebarIsOpen, toggleSidebar }) => (
       <Route path="/login" exact component={LoginPage} />
       <Route path="/find/email" exact component={FindEmailPage} />
       <Route path="/find/pw" exact component={FindPwPage} />
+      <Route path="/test" exact component={TestPage} />
+      <Route path="/loginTest" exact component={LoginPageTest} />
+      <Route path="/failloginTest" exact component={FailLoginPageTest} />
       <Route
         path="/login/ouath2/code/kakao"
         exact

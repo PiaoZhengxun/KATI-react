@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Button,
   Form,
@@ -19,57 +19,34 @@ import axios from "axios";
 
 var token;
 
-function LoginPage() {
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
-  const [data, setData] = useState("");
-  const [temp1, setTemp1] = useState("");
+function LoginTestPage() {
   const [okLogin, setOkLogin] = useState(false);
 
-  const onPasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const onEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const awsaws = (e) => {
-    e.preventDefault();
-    axios
-      .get(
-        "http://3.38.97.234:8000/core-service/api/v1/advertisement/search?size=3"
-      )
-      .then((response) => {
-        console.log(response);
-        console.log("Abcd");
-      })
-      .catch((error) => {
-        console.log(error.response);
-      });
-  };
-
-  const login = (e) => {
-    e.preventDefault();
-    userLogin
-      .userLoginApi(email, password)
-      .then((response) => {
-        console.log(response);
-        console.log(response.headers.authorization);
-        token = response.headers.authorization;
-        localStorage.setItem("authorization", token);
-        console.log("성공함");
-        console.log("토큰 저장 완료 : ", localStorage.getItem("authorization"));
-        setOkLogin(true);
-        window.location.href = "/";
-      })
-      .catch((error) => {
-        alert("로그인 실패", error);
-        console.log(error);
-        console.log(error.response);
-        console.log("LoginPage.js <- 여기서 login 부분 실패");
-      });
-  };
+  useEffect(() => {
+    let autoLogin = setTimeout(() => {
+      userLogin
+        .userLoginApi("cksgh3421@nate.com", "1234569")
+        .then((response) => {
+          console.log(response);
+          console.log(response.headers.authorization);
+          token = response.headers.authorization;
+          localStorage.setItem("authorization", token);
+          console.log("성공함");
+          console.log(
+            "토큰 저장 완료 : ",
+            localStorage.getItem("authorization")
+          );
+          setOkLogin(true);
+          window.location.href = "/";
+        })
+        .catch((error) => {
+          alert("로그인 실패", error);
+          console.log(error);
+          console.log(error.response);
+          console.log("LoginPage.js <- 여기서 login 부분 실패");
+        });
+    }, 3000);
+  }, []);
 
   return (
     <div
@@ -98,9 +75,8 @@ function LoginPage() {
                 <Input
                   id="exampleEmail"
                   name="email"
-                  placeholder="email@email.com"
+                  placeholder="cksgh3421@nate.com"
                   type="email"
-                  onChange={onEmailChange}
                 />
               </FormGroup>
             </Col>
@@ -110,9 +86,8 @@ function LoginPage() {
                 <Input
                   id="examplePassword"
                   name="password"
-                  placeholder="PASSWORD"
+                  placeholder="1234569"
                   type="password"
-                  onChange={onPasswordChange}
                 />
               </FormGroup>
             </Col>
@@ -127,11 +102,9 @@ function LoginPage() {
           <button
             className="login_btn"
             style={{ width: "100%", height: "50px" }}
-            onClick={login}
           >
             로그인
           </button>
-          <button onClick={awsaws}>니하오</button>
           <div
             style={{ display: "flex", marginTop: "10px", marginBottom: "50px" }}
           >
@@ -172,4 +145,4 @@ function LoginPage() {
   );
 }
 
-export default LoginPage;
+export default LoginTestPage;
