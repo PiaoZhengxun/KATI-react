@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {
   Navbar,
-  Button,
+  Input,
   NavbarToggler,
   Collapse,
   Nav,
@@ -26,12 +26,13 @@ const Topbar = ({ toggleSidebar,sidebarIsOpen}) => {
        <div onClick={toggleSidebar} style={{marginRight:'4rem'}}>
        {sidebarIsOpen ? <AiOutlineArrowLeft size="30" /> : <AiOutlineArrowRight size="30" />}
       </div>
+      
+      <div>
+      <Input placeholder="search.."/>
+      </div>
 
 
-        <form class="d-flex" style={{marginRight:"10px"}}>
-        <input class="searchForm" type="search" placeholder="Search" aria-label="Search"/>
-        <button className="searchBtn" type="submit">Search</button>
-        </form>
+      
       <NavbarToggler onClick={toggleTopbar} />
       <Collapse isOpen={topbarIsOpen} navbar>
         <Nav className="ml-auto" navbar>
