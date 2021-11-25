@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useState,useEffect } from 'react';
 
 function MainPage() {
+
+  useEffect(() => {
+    var token = localStorage.getItem("authorization")
+    if(token != null){
+      alert("login test success",token);
+    }else{
+      alert("login test failed");
+    }
+  }, []);
   return (
     <div>
-      메인 페이지 입니다 🎈
-      <br />
-      {localStorage.getItem("authorization")}
+      main
     </div>
   );
 }
