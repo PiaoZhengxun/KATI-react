@@ -4,7 +4,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import SideBar from "./Components/sidebar/SideBar";
 import Content from "./Components/Content/Content";
+import Footer from "../src/Components/Footer/Footer"
 import "./App.scss";
+
 
 const App = () => {
   const [sidebarIsOpen, setSidebarOpen] = useState(true);
@@ -16,7 +18,9 @@ const App = () => {
         <SideBar toggle={toggleSidebar} isOpen={sidebarIsOpen} />
         <Content toggleSidebar={toggleSidebar} sidebarIsOpen={sidebarIsOpen} />
       </div>
+      <Footer/>
     </Router>
+   
 
   );
 };
