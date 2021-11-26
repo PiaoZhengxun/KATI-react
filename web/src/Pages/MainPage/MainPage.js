@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react';
-import { getAds } from '../../api';
+import { getAds, getReviewRankingApi } from '../../api';
 import {Row,Col} from 'reactstrap'
 import ResultPage from '../../Components/UI/ResultPage'
 import RankingResult from '../../Components/UI/RankingResult';
@@ -10,23 +10,33 @@ function MainPage() {
   const [ad, setAd] = useState(null);
   const [loading, setLoading] = useState(true);
   const [adLoad, setAdLoad] = useState(true);
-  
+  const [ranking,setRanking] = useState(null);
+
   const getAdItems = async () =>{
     await getAds
     .getAdItems(5)
     .then((response) => {
       setAd(response.data);
       setAdLoad(false);
-      console.log("광고",ad);
     })
     .catch((e) => {
       console.log(e);
     });
   }
 
+  const getRankingItems = async ()=>{
+    await getReviewRankingApi.getReviewRanking()
+    .then((response) => {
+      setRanking(response.data);
+    })
+    .catch((e) => {
+      console.log(e);
+    })
+  }
+
   useEffect(() => {
     getAdItems()
-
+    getRankingItems()
     //var token = localStorage.getItem("authorization")
     //if(token != null){
      // alert("login test success",token);
@@ -46,7 +56,7 @@ function MainPage() {
             </Col>
         </Row>
         <hr className="divide__line" />
-      <RankingResult items={ad} adLoading={adLoad}/>
+      <RankingResult items={ranking} loading={adLoad}/>
 
     <br/> <br/>
 
@@ -60,7 +70,7 @@ function MainPage() {
             </Col>
         </Row>
         <hr className="divide__line" />
-        <ResultPage items={ad} adLoading={adLoad}/>
+        <ResultPage items={ad} loading={adLoad}/>
 
         <br/><br/>
         <Row className="big__name">

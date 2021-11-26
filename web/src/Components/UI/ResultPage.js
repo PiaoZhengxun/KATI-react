@@ -1,12 +1,12 @@
 import React, {useEffect,useState} from 'react'
 import './ResultPageStyle.scss'
-function ResultPage({items,adLoad}) {
+function ResultPage({items,loading}) {
     useEffect(() => {
         console.log("resultpage",items);
     }, [])
     return (
         <div style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
-          {adLoad ? <div>Loading...</div> :
+          {loading ? <div>Loading...</div> :
           <div style={{display:'flex',flexWrap:'wrap',justifyContent:'center'}}>
               {items && items.length>0 ? 
               items.map((item,idx) => (
