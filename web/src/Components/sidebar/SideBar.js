@@ -6,6 +6,7 @@ import { AiOutlineHome } from "react-icons/ai";
 import { BiSearch } from "react-icons/bi";
 import { MdOutlineCategory } from "react-icons/md";
 import { FiAward } from "react-icons/fi";
+
 const SideBar = ({ isOpen, toggle }) => (
   <div className={classNames("sidebar", { "is-open": isOpen })}>
     <div className="sidebar-header">

@@ -63,6 +63,14 @@ function MainPage() {
         <ResultPage items={ad} adLoading={adLoad}/>
 
         <br/><br/>
+        <Row className="big__name">
+            <Col md='11'>
+            <div style={{display:'flex',alignItems:'center'}}>
+                <div style={{fontSize:'1.5rem', fontWeight:'600',display:'flex'}}>카테고리</div>
+              </div>
+            </Col>
+        </Row>
+        <hr className="divide__line" />
         <CategoryMenu/>
     </div>
   );

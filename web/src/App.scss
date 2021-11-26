@@ -33,6 +33,7 @@ a{
   color: #fff;
   margin-left: -250px;
   transition: all 0.5s;
+  position: fixed;
 }
 .nav_link{
   display: "flex";
@@ -82,7 +83,7 @@ a{
 li a.dropdown-toggle::after {
   display: inline-flex;
   position: relative;
-  left: 60%;
+  //left: 60%;
   top: 10%;
 }
 
@@ -143,8 +144,8 @@ li a.dropdown-toggle::after {
 
 .content {
   padding: 20px;
-  margin-left: 0;
-  height: 100vh;
+  margin-left: 250px;
+  height: auto;
   a{
     color: gray !important;
   }
