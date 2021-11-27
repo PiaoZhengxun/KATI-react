@@ -46,6 +46,21 @@ function MainPage() {
   }, []);
   return (
     <div>
+
+        <Row className="big__name">
+            <Col md='11'>
+            <div style={{display:'flex',alignItems:'center'}}>
+                <div style={{fontSize:'1.5rem'}}>🎁</div>
+                <div style={{fontSize:'1.5rem', fontWeight:'600',display:'flex'}}>오늘의 광고</div>
+              </div>
+              <div>현재 광고하는 상품을 만나보세요!</div>
+            </Col>
+        </Row>
+        <hr className="divide__line" />
+        <ResultPage items={ad} loading={adLoad}/>
+
+        <br/><br/>
+
       <Row className="big__name">
             <Col md='11'>
               <div style={{display:'flex',alignItems:'center'}}>
@@ -60,19 +75,7 @@ function MainPage() {
 
     <br/> <br/>
 
-      <Row className="big__name">
-            <Col md='11'>
-            <div style={{display:'flex',alignItems:'center'}}>
-                <div style={{fontSize:'1.5rem'}}>🎁</div>
-                <div style={{fontSize:'1.5rem', fontWeight:'600',display:'flex'}}>오늘의 광고</div>
-              </div>
-              <div>현재 광고하는 상품을 만나보세요!</div>
-            </Col>
-        </Row>
-        <hr className="divide__line" />
-        <ResultPage items={ad} loading={adLoad}/>
-
-        <br/><br/>
+      
         <Row className="big__name">
             <Col md='11'>
             <div style={{display:'flex',alignItems:'center'}}>

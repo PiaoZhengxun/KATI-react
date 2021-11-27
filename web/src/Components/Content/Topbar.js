@@ -7,12 +7,17 @@ import {
   Nav,
   NavItem,
   NavLink,
+  Badge
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import {AiOutlineArrowLeft,AiOutlineArrowRight} from 'react-icons/ai'
+import { favouriteApi } from "../../api";
 const Topbar = ({ toggleSidebar,sidebarIsOpen}) => {
+  
   const [topbarIsOpen, setTopbarOpen] = useState(true);
   const [user,setUser] = useState(null);
+  const [favList,setFavList] = useState(null);
+  const [input,setInput] = useState('');
 
   const toggleTopbar = () =>  setTopbarOpen(!topbarIsOpen);
   const logout =() => {
@@ -22,13 +27,29 @@ const Topbar = ({ toggleSidebar,sidebarIsOpen}) => {
   }
   const getUser =()=>{
     setUser(localStorage.getItem("authorization"));
-    console.log(user)
+    //console.log(user)
   }
   
+  const getFavList =async()=>{
+   await favouriteApi.myFavourite()
+   .then((response) => {
+     console.log("즐겨찾기 반환",response.data)
+     setFavList(response.data.length)
+   }).catch(e => {
+   //  console.log(e)
+   })
+  }
+
+  const onKeyPress=(e) =>{
+    if(e.key=='Enter'){
+      window.location.href = '/search'
+    }
+  }
+
   useEffect(() => {
-    console.log("랜더링",localStorage.getItem("authorization"))
     getUser()
-  }, [user])
+    getFavList()
+  })
 
   return (
     <Navbar
@@ -43,11 +64,13 @@ const Topbar = ({ toggleSidebar,sidebarIsOpen}) => {
       </div>
       
       <div>
-      <Input placeholder="search.."/>
+      <Input placeholder="search.." onChange={
+                        (e)=>{
+                            setInput(e.target.value);
+                        }
+                    }
+      onKeyPress={onKeyPress}/>
       </div>
-
-
-      
       <NavbarToggler onClick={toggleTopbar} />
       <Collapse isOpen={topbarIsOpen} navbar>
         <Nav className="ml-auto" navbar>
@@ -67,8 +90,8 @@ const Topbar = ({ toggleSidebar,sidebarIsOpen}) => {
             : 
             <div style={{display:'flex'}}>
             <NavItem>
-               <NavLink tag={Link} to={"/mypage"}>
-                 마이페이지
+               <NavLink tag={Link} to={"/mypage"} style={{display:'flex',alignItems:'center'}}>
+               마이페이지  <Badge color="primary" pill style={{marginLeft:'0.2rem'}}>{favList}</Badge>
                </NavLink>
              </NavItem>
              <NavItem>

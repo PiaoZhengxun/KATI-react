@@ -63,6 +63,7 @@ const SideBar = ({ isOpen, toggle }) => (
             <div className="nav_menu" style={{ marginLeft: "5%" }}>
               RANKING
             </div>
+            <div className="navi_point"></div>
           </NavLink>
         </NavItem>
         <NavItem>

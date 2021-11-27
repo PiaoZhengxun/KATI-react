@@ -112,7 +112,6 @@ li a.dropdown-toggle::after {
 .side-menu::-webkit-scrollbar-thumb:hover {
   background: $primary-color;
 }
-
 /* ---------------------------------------------------
     TOP BAR STYLE
 ----------------------------------------------------- */
@@ -144,9 +143,9 @@ li a.dropdown-toggle::after {
 
 .content {
   padding: 20px;
-  margin-left: 250px;
   height: auto;
   background-color: white;
+  margin-left: 250px;
   a{
     color: gray !important;
   }

@@ -19,5 +19,10 @@
         cursor: pointer;
     }
     
+    .item_heart:hover{
+        color: $primary-color;
+        transform:scale(1.2);
+        transition: all 0.1s ease-in;
+    }
     
 }

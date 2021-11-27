@@ -24,7 +24,7 @@ import MyPage from "../../Pages/MyPage/MyPage";
 import TestPage from "../../Pages/TestPage/TestPage";
 import LoginPageTest from "../../Pages/TestPage/TestLoginPage";
 import FailLoginPageTest from "../../Pages/TestPage/FailTestLoginPage";
-const Content = ({ sidebarIsOpen, toggleSidebar }) => (
+const Content = ({ sidebarIsOpen, toggleSidebar}) => (
   <Container
     fluid
     className={classNames("content", { "is-open": sidebarIsOpen })}
@@ -32,7 +32,7 @@ const Content = ({ sidebarIsOpen, toggleSidebar }) => (
     <Topbar toggleSidebar={toggleSidebar} sidebarIsOpen={sidebarIsOpen} />
     <Switch>
       <Route path="/" exact component={MainPage} />
-      <Route path="/search" exact component={SearchPage} />
+      <Route path="/search" exact component={SearchPage}/>
       <Route path="/category" exact component={CategoryPage} />
       <Route path="/ranking" exact component={RankingPage} />
       <Route path="/join" exact component={JoinPage} />
