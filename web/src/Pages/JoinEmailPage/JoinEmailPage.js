@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Form, FormGroup, Label, Input, Button, FormText } from 'reactstrap';
+import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { useHistory } from 'react-router-dom';
 import { userJoin } from '../../api';
 import moment from 'moment/moment';

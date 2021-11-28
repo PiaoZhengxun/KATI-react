@@ -32,16 +32,10 @@ const SideBar = ({ isOpen, toggle }) => (
           </NavLink>
         </NavItem>
         <NavItem>
-          <NavLink
-            className="nav_link"
-            tag={Link}
-            to={"/ranking"}
-            style={{ display: "flex", alignItems: "center" }}
-          >
-            <BiSearch className="nav_menu" size="40" />
-            <div className="nav_menu" style={{ marginLeft: "5%" }}>
-              SEARCH
-            </div>
+
+          <NavLink className="nav_link" tag={Link} to={"/search"} style={{display:'flex',alignItems:'center'}}>
+          <BiSearch className="nav_menu" size="40"/>
+          <div className="nav_menu" style={{marginLeft:'5%'}}>SEARCH</div>
           </NavLink>
         </NavItem>
         <NavItem>
