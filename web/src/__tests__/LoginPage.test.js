@@ -1,24 +1,140 @@
 import React from "react";
 import axios from "axios";
 
-import { shallow } from "enzyme";
-import { mount } from "enzyme";
-import { configure } from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
-
-import { render, screen, fireEvent, getByTestId } from "@testing-library/react";
-
-import LoginPage from "../Pages/LoginPage/LoginPage";
+import "@testing-library/jest-dom/extend-expect";
+import { userLogin } from "../../src/api";
 
 import MockAdapter from "axios-mock-adapter";
-import "@testing-library/jest-dom/extend-expect";
 
-it("test LoginPage", async () => {
-  const url = "/login";
-  render(<LoginPage />);
-  const email = screen.getByLabelText("Email");
-  const password = screen.getByLabelText("Password");
+describe("<LoginPage/>", () => {
+  it("API call test", () => {
+    var mock = new MockAdapter(axios);
+    mock
+      .onPost("http://3.38.97.234:8000/core-service/login", {
+        email: "cksgh3422@nate.com",
+        password: "1234568",
+      })
+      .reply(200);
+  });
 });
+
+// const mock = new MockAdapter(userLogin.userLoginApi);
+
+// describe("test login api call", () => {
+//   it("reply 200", async () => {
+//     const data = {
+//       email: "cksgh3422@nate.com",
+//       password: "1234568",
+//     };
+//     mock.onPost("http://3.38.97.234:8000/core-service/login").reply(200);
+//     cons
+//   });
+// });
+
+//=-------------------------------------------------------------
+//=--------------------------NEW--------------------------------
+//=-------------------------------------------------------------
+
+// jest.mock("axios");
+
+// describe("Login Page Test", () => {
+//   it("okok success 200", () => {
+//     const data = {
+//       email: "cksgh3422@nate.com",
+//       password: "1234568",
+//     };
+
+//     const response = userLogin.userLoginApi(data);
+
+//     expect(response).toHaveReturnedWith("headers");
+//   });
+// });
+
+//=-------------------------------------------------------------
+//=--------------------------NEW--------------------------------
+//=-------------------------------------------------------------
+
+// describe("login page test", () => {
+//   test("success 200", (done) => {
+//     var mock = new MockAdapter(axios);
+//     const data = {
+//       email: "cksgh3422@nate.com",
+//       password: "1234568",
+//     };
+//     mock.onPost("http://3.38.97.234:8000/core-service/login").reply(200, data);
+//   });
+// });
+
+//=-------------------------------------------------------------
+//=--------------------------NEW--------------------------------
+//=-------------------------------------------------------------
+
+// jest.mock("axios");
+
+// describe("Login Page Test", () => {
+//   it("okok success 200", () => {
+//     const data = {
+//       email: "cksgh3422@nate.com",
+//       password: "1234568",
+//     };
+
+//     expect(userLogin(data)).toHaveReturnedWith("authorization");
+//   });
+// });
+
+//=-------------------------------------------------------------
+//=--------------------------NEW--------------------------------
+//=-------------------------------------------------------------
+
+// describe("Login Page Test", () => {
+//   it("success API call", async () => {
+//     const data = {
+//       email: "cksgh3422@nate.com",
+//       password: "1234568",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//     };
+
+//     axios.post.mockImplementationOnce(() => Promise.resolve(data));
+
+//     await expect(userLogin(data)).resolves.toEqual(data);
+
+//     // expect(axios.post).toHaveReturned("authorization");
+//     expect(axios.post).toHaveBeenCalledWith(
+//       "http://3.38.97.234:8000/core-service/login"
+//     );
+//   });
+// });
+
+//=-------------------------------------------------------------
+//=--------------------------NEW--------------------------------
+//=-------------------------------------------------------------
+
+// describe("fetchUsers", () => {
+//   describe("when API call is successful", () => {
+//     it("should return 200 or token", async () => {
+//       const user = [
+//         {
+//           email: "cksgh3422@nate.com",
+//           password: "1234568",
+//         },
+//       ];
+//       axios.post.mockResolvedValueOnce(user);
+
+//       const result = await userLogin(user);
+
+//       expect(axios.post).toHaveBeenCalledWith(
+//         "http://3.38.97.234:8000/core-service/login"
+//       );
+//       expect(result).toHaveProperty("authorization");
+//     });
+//   });
+// });
+
+//=-------------------------------------------------------------
+//=--------------------------NEW--------------------------------
+//=-------------------------------------------------------------
 
 // describe("<LoginPage/>", () => {
 //   const mock = new MockAdapter(axios, { delayResponse: 2000 });
