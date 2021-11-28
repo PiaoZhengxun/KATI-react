@@ -8,7 +8,8 @@ function ResultPage({items,loading}) {
               {items && items.length>0 ? 
               items.map((item,idx) => (
 
-                <ResultCard id={idx} foodId={item.food.foodId} foodImg={item.food.foodImageAddress}
+                <ResultCard 
+                id={idx} foodId={item.food.foodId} foodImg={item.food.foodImageAddress}
                 foodName={item.food.foodName} foodCategory={item.food.category} foodManufac={ item.food.manufacturerName}/>
         
               )): <div>No Result</div>}

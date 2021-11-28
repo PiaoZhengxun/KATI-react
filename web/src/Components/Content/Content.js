@@ -19,7 +19,7 @@ import FindEmailPage from "../../Pages/FindEmailPage/FindEmailPage";
 import FindPwPage from "../../Pages/FindPwPage/FindPwPage";
 import JoinEmailPage from "../../Pages/JoinEmailPage/JoinEmailPage";
 import MyPage from "../../Pages/MyPage/MyPage";
-
+import ItemDetailPage from "../../Pages/ItemDetailPage/ItemDetailPage";
 // test pages
 import TestPage from "../../Pages/TestPage/TestPage";
 import LoginPageTest from "../../Pages/TestPage/TestLoginPage";
@@ -33,6 +33,7 @@ const Content = ({ sidebarIsOpen, toggleSidebar}) => (
     <Switch>
       <Route path="/" exact component={MainPage} />
       <Route path="/search" exact component={SearchPage}/>
+      <Route path="/search/:id" exact component={ItemDetailPage} />
       <Route path="/category" exact component={CategoryPage} />
       <Route path="/ranking" exact component={RankingPage} />
       <Route path="/join" exact component={JoinPage} />
