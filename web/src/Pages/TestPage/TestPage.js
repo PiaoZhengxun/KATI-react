@@ -22,6 +22,9 @@ function TestPage() {
         <NavLink className="select_btn" tag={Link} to={"/failloginTest"}>
           로그인 테스트 `(아이디 비밀번호 전부 틀린 것)`
         </NavLink>
+        <NavLink className="select_btn" tag={Link} to={"/joinTest"}>
+          회원가입 테스트 `(맞는것)`
+        </NavLink>
       </div>
     </div>
   );

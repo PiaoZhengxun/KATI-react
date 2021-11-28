@@ -2,7 +2,6 @@ import React from "react";
 import axios from "axios";
 
 import "@testing-library/jest-dom/extend-expect";
-import { userLogin } from "../../src/api";
 
 import MockAdapter from "axios-mock-adapter";
 
