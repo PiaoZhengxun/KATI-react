@@ -1,4 +1,5 @@
 import React, {useEffect,useState} from 'react'
+import Review from '../../Components/UI/Review';
 import { foodDetailApi } from '../../api';
 import StarRatingComponent from 'react-star-rating-component';
 import {AiFillStar} from 'react-icons/ai'
@@ -9,17 +10,27 @@ import {Badge} from 'reactstrap';
 function ItemDetailPage(props) {
    const [foodId,setFoodId] = useState('')
    const [data,setData] = useState('');
-   const [allergies,setAllergies] = useState([])
+    const [allergies,setAllergies] = useState([])
 
     var info='';
+    var newArr=[];
+    var id 
    const getFoodDetail =async() =>{
-        var id = props.match.params.id
-        console.log("foodId",id)
+        id= props.match.params.id
+        setFoodId(id)
+        console.log("foodId",foodId)
        await foodDetailApi.search(id)
        .then((response) => {
            info = response.data;
            setData(info)
-           console.log("food data: ",info)
+
+           // 알러지 배열
+           var array = info.allergyMaterials.split(" ")
+           const set = new Set(array);
+          
+           newArr=[...set]
+           setAllergies(newArr)
+           console.log(allergies.length)
        })
        .catch((e)=>{
            console.log(e)
@@ -28,17 +39,18 @@ function ItemDetailPage(props) {
     useEffect(() => {
         getFoodDetail()
     }, [])
+
+
     return (
-        <div style={{display:'flex',flexDirection:'column',justifyContent:'center'}}>
+        <div style={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
             <div style={{display:'flex',flexWrap:'wrap', justifyContent:'space-evenly',}}>
-            <div style={{display:'flex',flexDirection:'column'}}>
-                <img width="500px" height="350px" src={data.foodImageAddress} />
-                <img width="500px" height="350px" src={data.foodMeteImageAddress} />
-               
-            </div>
-            <div style={{display:'grid',gridTemplateRows:'1fr 1fr'}}>
-                <div style={{display:'flex',flexDirection:'column',flexWrap:'wrap'}}>
-                <StarRatingComponent 
+                <div style={{display:'flex',flexDirection:'column'}}>
+                    <img width="500px" height="350px" src={data.foodImageAddress} />
+                    <img width="500px" height="350px" src={data.foodMeteImageAddress} />
+                </div>
+                <div style={{display:'grid'}}>
+                    <div style={{display:'flex',flexDirection:'column',flexWrap:'wrap'}}>
+                    <StarRatingComponent 
                     name="rate2" 
                     editing={false}
                     renderStarIcon={() => <AiFillStar size="20"/>}
@@ -46,29 +58,35 @@ function ItemDetailPage(props) {
                     value={parseFloat(data.reviewRate)}
                     style={{display:'flex'}}
                     />
-                 <div style={{display:'flex',flexWrap:'wrap',justifyContent:'space-between',alignItems:'center',marginTop:'2rem'}}>
+                    <div style={{display:'flex',flexWrap:'wrap',justifyContent:'space-between',alignItems:'center',marginTop:'2rem'}}>
                     <div style={{fontSize:'2rem',fontWeight:'600'}}>{data.foodName}</div>
                     <div><BsHeart size="30"/></div>
-                 </div>
+                    </div>
                   <hr/>
                   <div style={{lineHeight:'2.5rem'}}>
                     <div style={{fontSize:'1.2rem'}}>{data.foodId}</div>
                     <div>
                         <Link>
-                        <Badge color="primary" pill style={{background:'#FE8887',fontSize:'1rem'}}>
+                        <div style={{color:'blue',fontSize:'1rem'}}>
                             {data.category}
-                        </Badge>
+                        </div>
                         </Link>  
                     </div>
                      <div style={{display:'flex',flexWrap:"wrap",marginBottom:"50px"}}>{data.manufacturerName} </div>
-                     <div style={{width:'400px',wordBreak:'break-all',fontSize:'0.5rem'}}>{data.materials}</div>
+                     <div>
+                       {allergies.map((item, index) => (
+                         <Badge color="primary" pill style={{background:'#FE8887',fontSize:'1rem',marginRight:'1rem'}}>
+                         {item}
+                         </Badge>
+                       ))}
+                     </div>
+                     <div style={{width:'400px',wordBreak:'break-all',fontSize:'0.7rem'}}>{data.materials}</div>
                 </div>
                 </div>
-              
             </div>
-            <hr/>
+          
         </div>
-        
+        <Review foodId={foodId}/>
         </div>
     )
 }

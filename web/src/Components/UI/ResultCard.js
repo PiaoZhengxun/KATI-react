@@ -9,26 +9,28 @@ function ResultCard({id,foodId,foodImg,foodName,foodCategory,foodManufac}) {
     const [log,setLog] = useState(false);
   
     const setLike =async()=>{
-      if(isLike){
-        // 즐겨찾기 삭제
-        await deleteFavoriteApi.deleteFavorite(foodId)
-        .then((response)=>{
-          console.log("삭제성공", response.data)
-          setIsLike(false)
+      if(log){
+        if(isLike){
+          // 즐겨찾기 삭제
+          await deleteFavoriteApi.deleteFavorite(foodId)
+          .then((response)=>{
+            console.log("삭제성공", response.data)
+            setIsLike(false)
+          }).catch(e => {
+            //console.log(e)
+          })
+        }else{
+          // 즐겨찾기 추가
+          await addFavoriteApi.addFavorite(foodId)
+          .then((response) => {
+          console.log("결과 성공",response.data)
+          setIsLike(true)
         }).catch(e => {
           //console.log(e)
         })
-    
-    
+        }
       }else{
-        // 즐겨찾기 추가
-        await addFavoriteApi.addFavorite(foodId)
-        .then((response) => {
-        console.log("결과 성공",response.data)
-        setIsLike(true)
-      }).catch(e => {
-        //console.log(e)
-      })
+        alert("로그인을 해주세요")
       }
     }
     const checkFavorite = async()=>{
