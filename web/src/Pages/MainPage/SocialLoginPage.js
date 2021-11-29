@@ -4,7 +4,6 @@ import { kakaoSocialLogin } from "../../api";
 import { createDispatchHook } from "react-redux";
 
 function SocialLoginPage() {
-  // const [code, setCode] = useState("");
   const REDIRECT_URI = "http://localhost:3000/login/ouath2/code/kakao";
   const REST_API_KEY = "e44c5d0df42c6613c266e56204d9457b";
   const CLIENT_SECRET = "Rf1yNHjgzlieBWNm7T4ZOvSaASvNZ8UV";
@@ -46,14 +45,6 @@ function SocialLoginPage() {
         console.log(error, "에러발생 발생");
       });
   };
-
-  // useEffect(() => {
-  //   try {
-  //     kakaoLoginZuihou();
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // }, []);
 
   function requestToken(code) {
     const makeFormData = (params) => {

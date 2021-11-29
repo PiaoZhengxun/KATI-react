@@ -22,8 +22,6 @@ var token;
 function LoginPage() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [data, setData] = useState("");
-  const [temp1, setTemp1] = useState("");
   const [okLogin, setOkLogin] = useState(false);
 
   const onPasswordChange = (e) => {
@@ -32,21 +30,6 @@ function LoginPage() {
 
   const onEmailChange = (e) => {
     setEmail(e.target.value);
-  };
-
-  const awsaws = (e) => {
-    e.preventDefault();
-    axios
-      .get(
-        "http://3.38.97.234:8000/core-service/api/v1/advertisement/search?size=3"
-      )
-      .then((response) => {
-        console.log(response);
-        console.log("Abcd");
-      })
-      .catch((error) => {
-        console.log(error.response);
-      });
   };
 
   const login = (e) => {
@@ -131,7 +114,6 @@ function LoginPage() {
           >
             로그인
           </button>
-          <button onClick={awsaws}>니하오</button>
           <div
             style={{ display: "flex", marginTop: "10px", marginBottom: "50px" }}
           >
