@@ -18,6 +18,9 @@ import Topbar from "./Topbar";
 import FindEmailPage from "../../Pages/FindEmailPage/FindEmailPage";
 import FindPwPage from "../../Pages/FindPwPage/FindPwPage";
 import JoinEmailPage from "../../Pages/JoinEmailPage/JoinEmailPage";
+import MyPage from "../../Pages/MyPage/MyPage";
+import ItemDetailPage from "../../Pages/ItemDetailPage/ItemDetailPage";
+// test pages
 import TestPage from "../../Pages/TestPage/TestPage";
 import LoginPageTest from "../../Pages/TestPage/TestLoginPage";
 import FailLoginPageTest from "../../Pages/TestPage/FailTestLoginPage";
@@ -30,7 +33,8 @@ const Content = ({ sidebarIsOpen, toggleSidebar }) => (
     <Topbar toggleSidebar={toggleSidebar} sidebarIsOpen={sidebarIsOpen} />
     <Switch>
       <Route path="/" exact component={MainPage} />
-      <Route path="/search" exact component={SearchPage} />
+      <Route path="/search" exact component={SearchPage}/>
+      <Route path="/search/:id" exact component={ItemDetailPage} />
       <Route path="/category" exact component={CategoryPage} />
       <Route path="/ranking" exact component={RankingPage} />
       <Route path="/join" exact component={JoinPage} />
@@ -38,6 +42,7 @@ const Content = ({ sidebarIsOpen, toggleSidebar }) => (
       <Route path="/login" exact component={LoginPage} />
       <Route path="/find/email" exact component={FindEmailPage} />
       <Route path="/find/pw" exact component={FindPwPage} />
+      <Route path="/mypage" exact component={MyPage} />
       <Route path="/test" exact component={TestPage} />
       <Route path="/loginTest" exact component={LoginPageTest} />
       <Route path="/failloginTest" exact component={FailLoginPageTest} />

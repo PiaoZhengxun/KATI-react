@@ -5,5 +5,8 @@
   "main": "index.js",
   "repository": "https://github.com/PiaoZhengxun/KATI-react.git",
   "author": "hong",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "react-star-rating-component": "^1.4.1"
+  }
 }

@@ -6,6 +6,7 @@ import { AiOutlineHome } from "react-icons/ai";
 import { BiSearch } from "react-icons/bi";
 import { MdOutlineCategory } from "react-icons/md";
 import { FiAward } from "react-icons/fi";
+
 const SideBar = ({ isOpen, toggle }) => (
   <div className={classNames("sidebar", { "is-open": isOpen })}>
     <div className="sidebar-header">
@@ -62,6 +63,7 @@ const SideBar = ({ isOpen, toggle }) => (
             <div className="nav_menu" style={{ marginLeft: "5%" }}>
               RANKING
             </div>
+            <div className="navi_point"></div>
           </NavLink>
         </NavItem>
         <NavItem>

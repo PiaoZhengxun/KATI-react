@@ -461,3 +461,13 @@ export const getKakaoLogin = {
       // https://cors-anywhere.herokuapp.com/https://kauth.kakao.com/ 이건 개인적으로 프록시서버 사용하는 것
     ),
 };
+
+// new advertise api
+export const getAds = {
+  getAdItems : (size) =>
+  api.get("/api/v1/advertisement/search",{
+    params:{
+        size
+    }
+  })
+}
