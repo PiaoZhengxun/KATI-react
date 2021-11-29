@@ -12,7 +12,7 @@ const App = () => {
 
   return (
     <Router>
-      <div className="App wrapper">
+      <div className="App wrapper" style={{backgroundColor:'white'}}>
         <SideBar toggle={toggleSidebar} isOpen={sidebarIsOpen} />
         <Content toggleSidebar={toggleSidebar} sidebarIsOpen={sidebarIsOpen} />
       </div>

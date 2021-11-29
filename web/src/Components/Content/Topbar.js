@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {
   Navbar,
-  Button,
+  Input,
   NavbarToggler,
   Collapse,
   Nav,
@@ -9,10 +9,11 @@ import {
   NavLink,
 } from "reactstrap";
 import { Link } from "react-router-dom";
-import {AiOutlineArrowLeft} from 'react-icons/ai'
-const Topbar = ({ toggleSidebar }) => {
+import {AiOutlineArrowLeft,AiOutlineArrowRight} from 'react-icons/ai'
+const Topbar = ({ toggleSidebar,sidebarIsOpen}) => {
+  console.log(sidebarIsOpen)
   const [topbarIsOpen, setTopbarOpen] = useState(true);
-  const toggleTopbar = () => setTopbarOpen(!topbarIsOpen);
+  const toggleTopbar = () =>  setTopbarOpen(!topbarIsOpen);
 
   return (
     <Navbar
@@ -20,12 +21,18 @@ const Topbar = ({ toggleSidebar }) => {
       light
       className="navbar shadow-sm p-3 mb-5 bg-white rounded"
       expand="lg"
-      style={{display:"flex",flexWrap:"wrap"}}
+      style={{display:"flex",flexWrap:"wrap",justifyContent:"space-around"}}
     >
-        <form class="d-flex" style={{marginRight:"10px"}}>
-        <input class="searchForm" type="search" placeholder="Search" aria-label="Search"/>
-        <button className="searchBtn" type="submit">Search</button>
-        </form>
+       <div onClick={toggleSidebar} style={{marginRight:'4rem'}}>
+       {sidebarIsOpen ? <AiOutlineArrowLeft size="30" /> : <AiOutlineArrowRight size="30" />}
+      </div>
+      
+      <div>
+      <Input placeholder="search.."/>
+      </div>
+
+
+      
       <NavbarToggler onClick={toggleTopbar} />
       <Collapse isOpen={topbarIsOpen} navbar>
         <Nav className="ml-auto" navbar>

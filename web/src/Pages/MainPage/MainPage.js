@@ -1,11 +1,13 @@
-import React from 'react'
+import React from "react";
 
 function MainPage() {
-    return (
-        <div>
-            메인 페이지 입니다 🎈
-        </div>
-    )
+  return (
+    <div>
+      메인 페이지 입니다 🎈
+      <br />
+      {localStorage.getItem("authorization")}
+    </div>
+  );
 }
 
-export default MainPage
+export default MainPage;
