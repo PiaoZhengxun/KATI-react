@@ -24,7 +24,8 @@ import ItemDetailPage from "../../Pages/ItemDetailPage/ItemDetailPage";
 import TestPage from "../../Pages/TestPage/TestPage";
 import LoginPageTest from "../../Pages/TestPage/TestLoginPage";
 import FailLoginPageTest from "../../Pages/TestPage/FailTestLoginPage";
-const Content = ({ sidebarIsOpen, toggleSidebar}) => (
+import JoinPageTest from "../../Pages/TestPage/TestJoinEmailPage";
+const Content = ({ sidebarIsOpen, toggleSidebar }) => (
   <Container
     fluid
     className={classNames("content", { "is-open": sidebarIsOpen })}
@@ -45,6 +46,7 @@ const Content = ({ sidebarIsOpen, toggleSidebar}) => (
       <Route path="/test" exact component={TestPage} />
       <Route path="/loginTest" exact component={LoginPageTest} />
       <Route path="/failloginTest" exact component={FailLoginPageTest} />
+      <Route path="/joinTest" exact component={JoinPageTest} />
       <Route
         path="/login/ouath2/code/kakao"
         exact
