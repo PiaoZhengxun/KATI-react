@@ -42,7 +42,7 @@ function ItemDetailPage(props) {
 
 
     return (
-        <div style={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
+        <div style={{display:'flex',flexDirection:'column',justifyContent:'center',}}>
             <div style={{display:'flex',flexWrap:'wrap', justifyContent:'space-evenly',}}>
                 <div style={{display:'flex',flexDirection:'column'}}>
                     <img width="500px" height="350px" src={data.foodImageAddress} />
