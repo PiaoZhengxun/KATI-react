@@ -6,12 +6,16 @@ import {AiFillStar} from 'react-icons/ai'
 import {Link} from 'react-router-dom'
 import {BsHeart,BsFillHeartFill} from 'react-icons/bs'
 import {Badge} from 'reactstrap';
+import { checkFavoriteApi, addFavoriteApi, deleteFavoriteApi } from '../../api';
+import '../../Components/UI/ResultPageStyle.scss'
 
 function ItemDetailPage(props) {
    const [foodId,setFoodId] = useState('')
    const [data,setData] = useState('');
     const [allergies,setAllergies] = useState([])
-
+    const [isLike,setIsLike] = useState(null);
+    const [log,setLog] = useState(false);
+  
     var info='';
     var newArr=[];
     var id 
@@ -27,7 +31,6 @@ function ItemDetailPage(props) {
            // 알러지 배열
            var array = info.allergyMaterials.split(" ")
            const set = new Set(array);
-          
            newArr=[...set]
            setAllergies(newArr)
            console.log(allergies.length)
@@ -36,9 +39,50 @@ function ItemDetailPage(props) {
            console.log(e)
        })
     }
+    const setLike =async()=>{
+        if(log){
+          if(isLike){
+            // 즐겨찾기 삭제
+            await deleteFavoriteApi.deleteFavorite(id)
+            .then((response)=>{
+              console.log("삭제성공", response.data)
+              setIsLike(false)
+            }).catch(e => {
+              console.log(e)
+            })
+          }else{
+            // 즐겨찾기 추가
+            await addFavoriteApi.addFavorite(id)
+            .then((response) => {
+            console.log("결과 성공",response.data)
+            setIsLike(true)
+          }).catch(e => {
+            console.log(e)
+          })
+          }
+        }else{
+          alert("로그인을 해주세요")
+        }
+      }
+      const checkFavorite = async()=>{
+        await checkFavoriteApi.checkFavorite(id)
+        .then(async (response) => {
+          setIsLike(response.data)
+          console.log("좋아요",isLike)
+        }).catch(e => {
+          console.log(e);
+        })
+      }
     useEffect(() => {
+        
         getFoodDetail()
-    }, [])
+        console.log("id",id)
+        var user= localStorage.getItem('authorization')
+        if(user){
+            setLog(true)
+            checkFavorite()
+        }
+    },[isLike])
 
 
     return (
@@ -60,7 +104,10 @@ function ItemDetailPage(props) {
                     />
                     <div style={{display:'flex',flexWrap:'wrap',justifyContent:'space-between',alignItems:'center',marginTop:'2rem'}}>
                     <div style={{fontSize:'2rem',fontWeight:'600'}}>{data.foodName}</div>
-                    <div><BsHeart size="30"/></div>
+                    
+                    {!log?  <div color="gray" onClick={setLike}><BsHeart className="item_heart"  size="30"/></div> :
+                        isLike?  <div onClick={setLike}><BsFillHeartFill className="item_heart" color="#FE6F6E" size="30"/></div>:  <div onClick={setLike}><BsHeart className="item_heart"  size="30"/></div>}
+                    
                     </div>
                   <hr/>
                   <div style={{lineHeight:'2.5rem'}}>
