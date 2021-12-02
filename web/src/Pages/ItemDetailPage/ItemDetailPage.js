@@ -54,7 +54,6 @@ function ItemDetailPage(props) {
             // 즐겨찾기 추가
             await addFavoriteApi.addFavorite(id)
             .then((response) => {
-            console.log("결과 성공",response.data)
             setIsLike(true)
           }).catch(e => {
             console.log(e)
@@ -68,7 +67,6 @@ function ItemDetailPage(props) {
         await checkFavoriteApi.checkFavorite(id)
         .then(async (response) => {
           setIsLike(response.data)
-          console.log("좋아요",isLike)
         }).catch(e => {
           console.log(e);
         })

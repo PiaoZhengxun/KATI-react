@@ -4,6 +4,7 @@ import {Row,Col} from 'reactstrap'
 import ResultPage from '../../Components/UI/ResultPage'
 import RankingResult from '../../Components/UI/RankingResult';
 import CategoryMenu from '../../Components/UI/CategoryMenu';
+import { Link } from 'react-router-dom';
 
 function MainPage() {
   const [result, setResult] = useState(null);
@@ -53,7 +54,10 @@ function MainPage() {
                 <div style={{fontSize:'1.5rem'}}>🎁</div>
                 <div style={{fontSize:'1.5rem', fontWeight:'600',display:'flex'}}>오늘의 광고</div>
               </div>
-              <div>현재 광고하는 상품을 만나보세요!</div>
+              <div style={{display:'flex',justifyContent:'space-between'}}>
+                  <div>카티 플러스를 만나보세요.</div>
+                  <Link to="/ad"><div style={{color:'blue'}}>더보기+</div></Link>    
+                  </div>
             </Col>
         </Row>
         <hr className="divide__line" />
@@ -63,11 +67,14 @@ function MainPage() {
 
       <Row className="big__name">
             <Col md='11'>
-              <div style={{display:'flex',alignItems:'center'}}>
-                <div style={{fontSize:'1.5rem'}}>🔥</div>
-                <div style={{fontSize:'1.5rem', fontWeight:'600',display:'flex'}}>오늘의 HOT!!</div>
-              </div>
-              <div>인기있는 제품들 입니다.</div>
+                  <div style={{display:'flex',alignItems:'center'}}>
+                      <div style={{fontSize:'1.5rem'}}>🔥</div>
+                      <div style={{fontSize:'1.5rem', fontWeight:'600',display:'flex'}}>오늘의 HOT!!</div>
+                  </div>
+                  <div style={{display:'flex',justifyContent:'space-between'}}>
+                  <div>인기있는 제품들 입니다.</div>
+                  <Link to="/ranking"><div style={{color:'blue'}}>더보기+</div></Link>    
+                  </div>
             </Col>
         </Row>
         <hr className="divide__line" />

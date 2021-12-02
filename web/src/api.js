@@ -225,13 +225,13 @@ export const getAdvertisementFoodApi = {
 
 export const postReviewApi = {
   //해당 url로 가는 함수들
-  postReview: (review) =>
+  postReview: (foodId,review,rating) =>
     api.post(
       "/api/v1/user/createReview",
       {
-        foodId: review.foodId,
-        reviewDescription: review.reviewDescription,
-        reviewRating: review.reviewRating,
+        foodId: foodId,
+        reviewDescription: review,
+        reviewRating: rating,
       },
       {
         headers: {
@@ -433,6 +433,7 @@ export const allergyApi = {
     }),
 };
 
+
 export const getReviewByUserIDApi = {
   getReviews: (pageNum) =>
     api.get("/api/v1/user/readReviewByUserID", {
@@ -471,3 +472,4 @@ export const getAds = {
     }
   })
 }
+

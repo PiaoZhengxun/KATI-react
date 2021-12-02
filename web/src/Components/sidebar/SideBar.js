@@ -2,10 +2,9 @@ import React from "react";
 import { NavItem, NavLink, Nav } from "reactstrap";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
-import { AiOutlineHome } from "react-icons/ai";
-import { BiSearch } from "react-icons/bi";
-import { MdOutlineCategory } from "react-icons/md";
-import { FiAward } from "react-icons/fi";
+
+import {FaAdversal,FaHome} from "react-icons/fa"
+import {BsTrophyFill} from 'react-icons/bs'
 
 const SideBar = ({ isOpen, toggle }) => (
   <div className={classNames("sidebar", { "is-open": isOpen })}>
@@ -26,29 +25,22 @@ const SideBar = ({ isOpen, toggle }) => (
             to={"/"}
             style={{ display: "flex", alignItems: "center" }}
           >
-            <AiOutlineHome className="nav_menu" size="40" />
+            <FaHome className="nav_menu" size="40" />
             <div className="nav_menu" style={{ marginLeft: "5%" }}>
               HOME
             </div>
           </NavLink>
         </NavItem>
         <NavItem>
-
-          <NavLink className="nav_link" tag={Link} to={"/search"} style={{display:'flex',alignItems:'center'}}>
-          <BiSearch className="nav_menu" size="40"/>
-          <div className="nav_menu" style={{marginLeft:'5%'}}>SEARCH</div>
-          </NavLink>
-        </NavItem>
-        <NavItem>
           <NavLink
             className="nav_link"
             tag={Link}
-            to={"/category"}
+            to={"/ad"}
             style={{ display: "flex", alignItems: "center" }}
           >
-            <MdOutlineCategory className="nav_menu" size="40" />
+            <FaAdversal className="nav_menu" size="40" />
             <div className="nav_menu" style={{ marginLeft: "5%" }}>
-              CATEGORY
+              AD
             </div>
           </NavLink>
         </NavItem>
@@ -59,26 +51,14 @@ const SideBar = ({ isOpen, toggle }) => (
             to={"/ranking"}
             style={{ display: "flex", alignItems: "center" }}
           >
-            <FiAward className="nav_menu" size="40" />
+            <BsTrophyFill className="nav_menu" size="40" />
             <div className="nav_menu" style={{ marginLeft: "5%" }}>
               RANKING
             </div>
             <div className="navi_point"></div>
           </NavLink>
         </NavItem>
-        <NavItem>
-          <NavLink
-            className="nav_link"
-            tag={Link}
-            to={"/test"}
-            style={{ display: "flex", alignItems: "center" }}
-          >
-            <FiAward className="nav_menu" size="40" />
-            <div className="nav_menu" style={{ marginLeft: "5%" }}>
-              test
-            </div>
-          </NavLink>
-        </NavItem>
+      
       </Nav>
     </div>
   </div>

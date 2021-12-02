@@ -3,7 +3,7 @@ import React from 'react'
 function CategoryPage() {
     return (
         <div>
-            카테고리 페이지 입니다 ~
+            광고페이지~~
         </div>
     )
 }

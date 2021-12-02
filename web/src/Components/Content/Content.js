@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 import MainPage from "../../Pages/MainPage/MainPage";
 import RankingPage from "../../Pages/RankingPage/RankingPage";
-import CategoryPage from "../../Pages/CategoryPage/CategoryPage";
+import AdPage from "../../Pages/AdPage/AdPage";
 import JoinPage from "../../Pages/JoinPage/JoinPage";
 import LoginPage from "../../Pages/LoginPage/LoginPage";
 import SearchPage from "../../Pages/SearchPage/SearchPage";
@@ -35,7 +35,7 @@ const Content = ({ sidebarIsOpen, toggleSidebar }) => (
       <Route path="/" exact component={MainPage} />
       <Route path="/search" exact component={SearchPage}/>
       <Route path="/search/:id" exact component={ItemDetailPage} />
-      <Route path="/category" exact component={CategoryPage} />
+      <Route path="/ad" exact component={AdPage} />
       <Route path="/ranking" exact component={RankingPage} />
       <Route path="/join" exact component={JoinPage} />
       <Route path="/join/email" exact component={JoinEmailPage} />
