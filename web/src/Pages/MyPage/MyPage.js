@@ -1,14 +1,13 @@
 import React, {useEffect,useState} from 'react'
-import {getUserSummary,getUserInfoApi,getReviewByUserIDApi,favouriteApi} from '../../api'
-import {AiOutlineUser,AiOutlineStar,AiOutlineUserDelete} from 'react-icons/ai'
-import {MdOutlineRateReview} from 'react-icons/md'
+import {getUserInfoApi,getReviewByUserIDApi,favouriteApi} from '../../api'
+import {AiOutlineUser} from 'react-icons/ai'
 import {Badge} from 'reactstrap'
 import ResultCard from '../../Components/UI/ResultCard'
 import { Link } from 'react-router-dom';
-import { BsFillHeartFill } from 'react-icons/bs'
 import {Card,CardBody,CardText,CardTitle,CardSubtitle,Button} from 'reactstrap'
 import StarRatingComponent from 'react-star-rating-component';
 import {AiFillStar} from 'react-icons/ai'
+import {Modal,ModalHeader,ModalBody,ModalFooter} from 'reactstrap'
 function MyPage() {
     const [user,setUser] = useState();
     const [fav,setFav] = useState([]);
@@ -69,15 +68,43 @@ function MyPage() {
                 <hr width="80%"/>
                 <AiOutlineUser size="50"/> 
                     <div style={{fontSize:"1.5rem",fontWeight:"600",display:'flex', }}> 
-                    {user.name}
+                    user.name
                     </div>
                     <div>
-                    {user.birth} {user.address}
+                    user.birth user.address
                     </div>
+                    <Button
+    color="danger"
+    onClick={function noRefCheck(){}}
+  >
+    내정보
+  </Button>
+  <Modal
+    toggle={function noRefCheck(){}}
+  >
+    <ModalHeader toggle={function noRefCheck(){}}>
+      Modal title
+    </ModalHeader>
+    <ModalBody>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </ModalBody>
+    <ModalFooter>
+      <Button
+        color="primary"
+        onClick={function noRefCheck(){}}
+      >
+        Do Something
+      </Button>
+      {' '}
+      <Button onClick={function noRefCheck(){}}>
+        Cancel
+      </Button>
+    </ModalFooter>
+  </Modal>
                     
-                </div>
-                <div>
-                    <div style={{display:'flex',flexDirection:'column'}}>
+            </div>
+            <div>
+                    <div style={{display:'flex',flexDirection:'column',marginTop:'50px'}}>
                          <div>
                             <div style={{fontSize:'1.5rem', fontWeight:"600"}}>찜  <Badge color="primary" pill style={{marginLeft:'0.2rem'}}>{fav.length}</Badge> </div>
                             <hr/>

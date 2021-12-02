@@ -51,7 +51,7 @@ function ResultCard({id,foodId,foodImg,foodName,foodCategory,foodManufac}) {
     })
     return (
   
-        <div className="item_card" id={id} style={{display:'grid',gridTemplateRows:'0.2fr 1fr 0.5fr', borderRadius:'5px',marginRight:'1rem',marginBottom:'1rem'}}>
+        <div className="item_card" id={id} style={{background:'white',display:'grid',gridTemplateRows:'0.2fr 1fr 0.5fr', borderRadius:'5px',marginRight:'1rem',marginBottom:'1rem'}}>
           
           {!log?  <div color="gray" onClick={setLike}><BsHeart className="item_heart"  size="30"/></div> :
             isLike?  <div onClick={setLike}><BsFillHeartFill className="item_heart" color="#FE6F6E" size="30"/></div>:  <div onClick={setLike}><BsHeart className="item_heart"  size="30"/></div>}
@@ -63,7 +63,9 @@ function ResultCard({id,foodId,foodImg,foodName,foodCategory,foodManufac}) {
         <div style={{display:'flex', flexDirection:'column',alignItems:'center'}}>
           <div style={{marginTop:'10px',fontSize:'1rem', fontWeight:'600'}}>{foodName}</div>
           <div style={{fontSize:'0.8rem', marginTop:'10px'}}> {foodId} {foodCategory}</div>
-          <div style={{fontSize:'0.8rem'}}>{foodManufac.length > 10 ? foodManufac.substring(0,10)+'...': foodManufac}</div>
+          <div style={{fontSize:'0.8rem'}}>
+            {foodManufac ? <div>{foodManufac.length > 10 ? foodManufac.substring(0,10)+'...': foodManufac}</div> : <div></div>}
+          </div>
         </div>
         
         <div style={{display:'flex',justifyContent:'space-evenly',alignItems:'center'}}>
